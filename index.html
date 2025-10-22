@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTech Insights - Consulting, Training & Technology Blog</title>
+    
+    <!-- Google Fonts: Montserrat & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables (Style Guide) --- */
+        :root {
+            --primary-color: #1A73E8;
+            --secondary-color: #34A853;
+            --accent-color: #EA4335;
+            --dark-gray: #202124;
+            --medium-gray: #5F6368;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --border-color: #E0E0E0;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            --container-width: 1200px;
+            --section-padding: 60px 20px;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        /* --- Global & Reset Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #155ab6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #155ab6;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .section-padding {
+            padding: var(--section-padding);
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+
+        .logo i {
+            color: var(--primary-color);
+        }
+
+        .main-nav {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            font-weight: 600;
+            color: var(--dark-gray);
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-bar {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Advertisement Banners --- */
+        .ad-banner {
+            background-color: #f0f0f0;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.9rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .ad-banner-header { height: 90px; width: 100%; max-width: 728px; margin: 1rem auto; }
+        .ad-banner-sidebar { height: 250px; width: 100%; max-width: 300px; }
+        .ad-banner-content { height: 250px; width: 100%; max-width: 600px; margin: 2rem auto; }
+
+        /* --- Main Content Area --- */
+        #main-content {
+            min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+        }
+        .view {
+            display: none;
+        }
+        .view.active {
+            display: block;
+        }
+
+        /* --- Home View --- */
+        .hero {
+            background: linear-gradient(rgba(26, 115, 232, 0.7), rgba(26, 115, 232, 0.7)), url('https://picsum.photos/seed/datatechhero/1920/800.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-hero {
+            margin-top: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .newsletter-hero input { padding: 12px; border-radius: 4px; border: none; flex-grow: 1; }
+
+        .latest-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-meta {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .services-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .vendor-showcase {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+        }
+        .vendor-showcase img {
+            height: 50px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .vendor-showcase img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* --- Blog List View --- */
+        .blog-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .blog-list-header h1 { margin-bottom: 0; }
+        .blog-filters { display: flex; gap: 1rem; }
+        .blog-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+        .blog-sidebar .ad-banner-sidebar { margin-top: 0; }
+
+        /* --- Single Blog Post View --- */
+        .blog-post-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .blog-post-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .blog-post-body h2 { margin-top: 2rem; }
+        .blog-post-body blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--medium-gray);
+        }
+        .related-posts {
+            margin-top: 3rem;
+        }
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* --- Services View --- */
+        .services-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Members, Vendors, Consultant Views --- */
+        .form-container {
+            max-width: 500px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        .form-group textarea { resize: vertical; }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .dashboard-card {
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        .vendor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .vendor-card {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+        }
+        .vendor-card img {
+            height: 60px;
+            margin: 0 auto 1rem auto;
+            filter: grayscale(100%);
+        }
+        .vendor-card:hover img { filter: grayscale(0%); }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-gray);
+            color: var(--light-gray);
+            padding: 3rem 0 1rem 0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-column a {
+            color: var(--light-gray);
+        }
+        .footer-column a:hover {
+            color: var(--white);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+        .social-links a {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .blog-layout { grid-template-columns: 1fr; }
+            .blog-sidebar { display: none; } /* Hide sidebar on smaller screens */
+        }
+
+        @media (max-width: 768px) {
+            .header-container, .main-nav { flex-direction: column; }
+            .main-nav { width: 100%; text-align: center; padding: 1rem 0; display: none; }
+            .main-nav.nav-active { display: flex; }
+            .header-actions { width: 100%; justify-content: center; margin-top: 1rem; }
+            .mobile-menu-toggle { display: block; position: absolute; top: 1.2rem; right: 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .newsletter-hero { flex-direction: column; width: 100%; }
+            .services-tabs { flex-wrap: wrap; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- =================== HEADER =================== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo"><i class="fas fa-database"></i> DataTech Insights</a>
+            
+            <nav>
+                <ul class="main-nav" id="main-nav">
+                    <li><a href="#" data-view="home-view" class="nav-link active">Home</a></li>
+                    <li><a href="#" data-view="blog-list-view" class="nav-link">Blog</a></li>
+                    <li><a href="#" data-view="services-view" class="nav-link">Services</a></li>
+                    <li><a href="#" data-view="vendors-view" class="nav-link">Vendors</a></li>
+                    <li><a href="#" data-view="members-view" class="nav-link">Members</a></li>
+                    <li><a href="#" data-view="consultant-register-view" class="nav-link">Join as Consultant</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <input type="search" class="search-bar" placeholder="Search...">
+                <a href="#" data-view="members-view" class="btn btn-secondary">Login</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- =================== MAIN CONTENT =================== -->
+    <main id="main-content">
+        
+        <!-- === HOME VIEW === -->
+        <div id="home-view" class="view active">
+            <section class="hero">
+                <div class="container">
+                    <h1>Transforming Data Into Insights</h1>
+                    <p>Expert consulting, training, and technology solutions for data professionals across the world.</p>
+                    <div class="hero-actions">
+                        <a href="#" data-view="services-view" class="btn">Explore Our Services</a>
+                        <a href="#" data-view="blog-list-view" class="btn btn-secondary">Read Latest Insights</a>
+                    </div>
+                    <form class="newsletter-hero" id="newsletter-form-hero">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+            <div class="ad-banner ad-banner-header">Advertisement Banner (728x90)</div>
+
+            <section class="section-padding">
+                <div class="container">
+                    <h2 style="text-align: center;">Latest from the Blog</h2>
+                    <div class="latest-posts-grid" id="home-posts-grid">
+                        <!-- Posts will be dynamically inserted here -->
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#" data-view="blog-list-view" class="btn">View All Posts</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" style="background-color: var(--light-gray);">
+                <div class="container">
+                    <h2 style="text-align: center;">Our Services</h2>
+                    <div class="services-preview">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="service-icon"><i class="fas fa-microchip"></i></div>
+                                <h3>Technology Solutions</h3>
+                                <p>Cutting-edge tools and platforms to power your data infrastructure.</p>
+                                <a href="#" data-view="services-view" class="btn">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                                <h3>Consulting Services</h3>
+                                <p>Strategic guidance from industry experts to navigate your data journey.</p>
+                                <a href="#" data-view="services-view" class="btn">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <h3>Training Programs</h3>
+                                <p>Comprehensive courses to upskill your team in data science and analytics.</p>
+                                <a href="#" data-view="services-view" class="btn">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+                                <h3>Events & Workshops</h3>
+                                <p>Join us for exclusive events to network and learn from the best.</p>
+                                <a href="#" data-view="services-view" class="btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding">
+                <div class="container">
+                    <h2 style="text-align: center;">Trusted by Leading Vendors</h2>
+                    <div class="vendor-showcase">
+                        <img src="https://picsum.photos/seed/vendor1/150/60.jpg" alt="Vendor 1">
+                        <img src="https://picsum.photos/seed/vendor2/150/60.jpg" alt="Vendor 2">
+                        <img src="https://picsum.photos/seed/vendor3/150/60.jpg" alt="Vendor 3">
+                        <img src="https://picsum.photos/seed/vendor4/150/60.jpg" alt="Vendor 4">
+                        <img src="https://picsum.photos/seed/vendor5/150/60.jpg" alt="Vendor 5">
+                        <img src="https://picsum.photos/seed/vendor6/150/60.jpg" alt="Vendor 6">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- === BLOG LIST VIEW === -->
+        <div id="blog-list-view" class="view">
+            <section class="section-padding">
+                <div class="container">
+                    <div class="blog-list-header">
+                        <h1>Data Technology Insights</h1>
+                        <div class="blog-filters">
+                            <select><option>All Categories</option></select>
+                            <select><option>Latest First</option></select>
+                        </div>
+                    </div>
+                    <div class="blog-layout">
+                        <div class="blog-list-grid" id="blog-list-grid">
+                            <!-- Blog posts will be dynamically inserted here -->
+                        </div>
+                        <aside class="blog-sidebar">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h3>Subscribe to our Newsletter</h3>
+                                    <p>Get the latest posts delivered right to your inbox.</p>
+                                    <form id="newsletter-form-sidebar">
+                                        <div class="form-group">
+                                            <input type="email" placeholder="Your email" required>
+                                        </div>
+                                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="ad-banner ad-banner-sidebar">Advertisement (300x250)</div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- === SINGLE BLOG POST VIEW === -->
+        <div id="blog-post-view" class="view">
+            <article class="blog-post-header">
+                <img id="post-image" src="" alt="">
+                <div class="container">
+                    <div class="blog-post-meta">
+                        <img id="post-author-avatar" src="" alt="" class="author-avatar">
+                        <div>
+                            <strong id="post-author"></strong>
+                            <p id="post-date"></p>
+                        </div>
+                    </div>
+                    <h1 id="post-title"></h1>
+                </div>
+            </article>
+            <section class="section-padding">
+                <div class="container">
+                    <div class="blog-layout">
+                        <div class="blog-post-body" id="post-body">
+                            <!-- Content will be dynamically inserted here -->
+                        </div>
+                        <aside class="blog-sidebar">
+                            <div class="ad-banner ad-banner-sidebar">Advertisement (300x600)</div>
+                        </aside>
+                    </div>
+                    <div class="related-posts">
+                        <h2>Related Posts</h2>
+                        <div class="related-posts-grid" id="related-posts-grid">
+                            <!-- Related posts will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- === SERVICES VIEW === -->
+        <div id="services-view" class="view">
+            <section class="section-padding">
+                <div class="container">
+                    <h1 style="text-align: center;">Our Expert Services</h1>
+                    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem auto;">We empower data professionals with the technology, skills, and strategy needed to excel in a data-driven world.</p>
+                    
+                    <div class="services-tabs">
+                        <button class="tab-button active" data-tab="technology">Technology</button>
+                        <button class="tab-button" data-tab="consulting">Consulting</button>
+                        <button class="tab-button" data-tab="training">Training</button>
+                        <button class="tab-button" data-tab="events">Events</button>
+                    </div>
+
+                    <div id="technology" class="tab-content active">
+                        <h2>Technology Solutions</h2>
+                        <p>We provide and implement state-of-the-art data platforms, from cloud data warehouses to real-time analytics engines. Our solutions are scalable, secure, and tailored to your specific needs.</p>
+                        <ul style="margin-left: 20px; margin-top: 1rem;">
+                            <li>Cloud Data Warehousing (Snowflake, BigQuery, Redshift)</li>
+                            <li>Data Lake & Lakehouse Architecture</li>
+                            <li>ETL/ELT Pipeline Development</li>
+                            <li>Business Intelligence & Visualization Tools</li>
+                        </ul>
+                    </div>
+
+                    <div id="consulting" class="tab-content">
+                        <h2>Consulting Services</h2>
+                        <p>Our seasoned consultants partner with you to define a clear data strategy, optimize your existing infrastructure, and ensure you're getting maximum value from your data assets.</p>
+                        <ul style="margin-left: 20px; margin-top: 1rem;">
+                            <li>Data Strategy & Roadmap Planning</li>
+                            <li>Data Governance & Quality Management</li>
+                            <li>Machine Learning Model Deployment</li>
+                            <li>Performance & Cost Optimization</li>
+                        </ul>
+                    </div>
+
+                    <div id="training" class="tab-content">
+                        <h2>Training Programs</h2>
+                        <p>Accelerate your team's capabilities with our hands-on training programs. We offer everything from foundational data literacy to advanced machine learning certifications.</p>
+                        <ul style="margin-left: 20px; margin-top: 1rem;">
+                            <li>SQL for Data Analysis</li>
+                            <li>Python & R for Data Science</li>
+                            <li>Cloud Platform Certifications (AWS, Azure, GCP)</li>
+                            <li>Custom Corporate Training</li>
+                        </ul>
+                    </div>
+
+                    <div id="events" class="tab-content">
+                        <h2>Events & Workshops</h2>
+                        <p>Join our exclusive workshops, webinars, and conferences to network with peers, learn from industry leaders, and stay ahead of the latest trends in data technology.</p>
+                        <ul style="margin-left: 20px; margin-top: 1rem;">
+                            <li>Annual DataTech Summit</li>
+                            <li>Monthly Webinar Series</li>
+                            <li>Hands-on Workshops</li>
+                            <li>Networking Meetups</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- === MEMBERS VIEW (Login Placeholder) === -->
+        <div id="members-view" class="view">
+            <section class="section-padding">
+                <div class="form-container">
+                    <h2 style="text-align: center;">Member Login</h2>
+                    <p style="text-align: center; margin-bottom: 2rem;">Access exclusive resources and content.</p>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Login</button>
+                        <p style="text-align: center; margin-top: 1rem;">
+                            <a href="#">Forgot Password?</a> | <a href="#">Register for an Account</a>
+                        </p>
+                    </form>
+                </div>
+            </section>
+        </div>
+        
+        <!-- === VENDORS VIEW === -->
+        <div id="vendors-view" class="view">
+            <section class="section-padding">
+                <div class="container">
+                    <h1 style="text-align: center;">Our Technology Partners</h1>
+                    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem auto;">We collaborate with leading technology vendors to bring you the best-in-class solutions for your data challenges.</p>
+                    
+                    <div class="vendor-grid">
+                        <div class="vendor-card">
+                            <img src="https://picsum.photos/seed/snowflake/150/60.jpg" alt="Snowflake">
+                            <h3>Snowflake</h3>
+                            <p>The cloud data platform that breaks down data silos.</p>
+                            <a href="#" class="btn btn-secondary">View Profile</a>
+                        </div>
+                        <div class="vendor-card">
+                            <img src="https://picsum.photos/seed/tableau/150/60.jpg" alt="Tableau">
+                            <h3>Tableau</h3>
+                            <p>Powerful visual analytics to unlock the value of your data.</p>
+                            <a href="#" class="btn btn-secondary">View Profile</a>
+                        </div>
+                        <div class="vendor-card">
+                            <img src="https://picsum.photos/seed/databricks/150/60.jpg" alt="Databricks">
+                            <h3>Databricks</h3>
+                            <p>Unified analytics platform for big data and machine learning.</p>
+                            <a href="#" class="btn btn-secondary">View Profile</a>
+                        </div>
+                        <div class="vendor-card">
+                            <img src="https://picsum.photos/seed/aws/150/60.jpg" alt="AWS">
+                            <h3>Amazon Web Services</h3>
+                            <p>Reliable, scalable, and inexpensive cloud computing services.</p>
+                            <a href="#" class="btn btn-secondary">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- === CONSULTANT REGISTRATION VIEW === -->
+        <div id="consultant-register-view" class="view">
+            <section class="section-padding">
+                <div class="form-container">
+                    <h2 style="text-align: center;">Join Our Consultant Network</h2>
+                    <p style="text-align: center; margin-bottom: 2rem;">Share your expertise and help shape the future of data.</p>
+                    <form id="consultant-register-form">
+                        <div class="form-group">
+                            <label for="con-name">Full Name</label>
+                            <input type="text" id="con-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="con-email">Professional Email</label>
+                            <input type="email" id="con-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="con-expertise">Area of Expertise</label>
+                            <textarea id="con-expertise" rows="4" placeholder="e.g., Data Engineering, ML Ops, BI Strategy..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="con-linkedin">LinkedIn Profile URL</label>
+                            <input type="url" id="con-linkedin">
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- =================== FOOTER =================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DataTech Insights</h3>
+                    <p>Your premier source for data technology news, expert advice, and professional services.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" data-view="blog-list-view">Blog</a></li>
+                        <li><a href="#" data-view="services-view">Services</a></li>
+                        <li><a href="#" data-view="vendors-view">Vendors</a></li>
+                        <li><a href="#" data-view="consultant-register-view">Become a Consultant</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Whitepapers</a></li>
+                        <li><a href="#">Webinars</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@datatechinsights.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Data Drive, Tech City, USA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DataTech Insights. All Rights Reserved By Zannatul. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- "Database" of Blog Posts ---
+            const blogPosts = [
+                {
+                    id: 1,
+                    title: "The Future of Data Warehousing: Cloud-Native Architectures",
+                    excerpt: "Exploring how cloud-native solutions like Snowflake and BigQuery are revolutionizing data warehousing with scalability and flexibility.",
+                    author: "Jane Doe",
+                    date: "2024-05-10",
+                    readTime: "5 min read",
+                    image: "https://picsum.photos/seed/post1/800/400.jpg",
+                    authorAvatar: "https://picsum.photos/seed/avatar1/100/100.jpg",
+                    content: `
+                        <p>The landscape of data warehousing is undergoing a seismic shift. For decades, on-premise solutions dominated the enterprise, but the rise of the cloud has introduced a new paradigm: cloud-native data warehouses. These platforms are not just traditional databases hosted in the cloud; they are built from the ground up to leverage the cloud's inherent strengths.</p>
+                        <h2>What Makes it 'Cloud-Native'?</h2>
+                        <p>Key characteristics include separation of storage and compute, automatic scaling, and a pay-as-you-go model. This decoupling means you can scale up your processing power for a complex query without scaling your storage costs, and vice-versa.</p>
+                        <blockquote>"The ability to pause and resume compute clusters is a game-changer for cost management in data analytics." - A leading industry analyst.</blockquote>
+                        <h2>Key Players and Their Strengths</h2>
+                        <p>Snowflake, Google BigQuery, and Amazon Redshift are the titans of this space. Snowflake excels with its multi-cluster shared architecture and cross-cloud capabilities. BigQuery integrates seamlessly with the Google Cloud Platform's machine learning tools. Redshift benefits from deep integration within the AWS ecosystem.</p>
+                        <p>Choosing the right platform depends on your existing cloud infrastructure, specific workload requirements, and cost considerations. However, the trend is clear: the future of data warehousing is undoubtedly in the cloud.</p>
+                    `
+                },
+                {
+                    id: 2,
+                    title: "Implementing a Robust Data Governance Framework",
+                    excerpt: "A step-by-step guide to establishing data governance policies that ensure quality, security, and compliance across your organization.",
+                    author: "John Smith",
+                    date: "2024-05-08",
+                    readTime: "7 min read",
+                    image: "https://picsum.photos/seed/post2/800/400.jpg",
+                    authorAvatar: "https://picsum.photos/seed/avatar2/100/100.jpg",
+                    content: `<p>Data is often called the 'new oil,' but like oil, it's only valuable if it's refined. Data governance is the refining process. It's the collection of practices and processes that ensure your data is formal, managed, and usable across an organization.</p>`
+                },
+                {
+                    id: 3,
+                    title: "Introduction to MLOps: Bridging the Gap from Model to Production",
+                    excerpt: "Learn the core principles of MLOps and how to streamline the deployment and monitoring of machine learning models.",
+                    author: "Emily Chen",
+                    date: "2024-05-05",
+                    readTime: "6 min read",
+                    image: "https://picsum.photos/seed/post3/800/400.jpg",
+                    authorAvatar: "https://picsum.photos/seed/avatar3/100/100.jpg",
+                    content: `<p>Building a machine learning model is only half the battle. The real challenge—and value—lies in deploying it into a production environment where it can deliver insights at scale. This is where MLOps comes in.</p>`
+                },
+                {
+                    id: 4,
+                    title: "Data Visualization Best Practices for Clearer Insights",
+                    excerpt: "How to choose the right charts and design principles to communicate your data findings effectively to any audience.",
+                    author: "Michael Brown",
+                    date: "2024-05-01",
+                    readTime: "4 min read",
+                    image: "https://picsum.photos/seed/post4/800/400.jpg",
+                    authorAvatar: "https://picsum.photos/seed/avatar4/100/100.jpg",
+                    content: `<p>A great visualization can tell a story that pages of data cannot. But a poor one can confuse and mislead. The key is to match the visual to the message you want to convey.</p>`
+                }
+            ];
+
+            // --- DOM Elements ---
+            const mainContent = document.getElementById('main-content');
+            const views = document.querySelectorAll('.view');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // --- View Switching Logic ---
+            function showView(viewId) {
+                views.forEach(view => view.classList.remove('active'));
+                document.getElementById(viewId).classList.add('active');
+                
+                navLinks.forEach(link => {
+                    if (link.dataset.view === viewId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                window.scrollTo(0, 0); // Scroll to top on view change
+            }
+
+            // --- Event Listeners for Navigation ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const viewId = link.dataset.view;
+                    showView(viewId);
+                    mainNav.classList.remove('nav-active'); // Close mobile menu
+                });
+            });
+
+            // Mobile Menu Toggle
+            mobileMenuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('nav-active');
+            });
+
+            // --- Dynamic Content Loading ---
+            function renderPostCard(post) {
+                return `
+                    <div class="card">
+                        <img src="${post.image}" alt="${post.title}" class="card-image">
+                        <div class="card-content">
+                            <div class="card-meta">${post.date} • ${post.readTime}</div>
+                            <h3>${post.title}</h3>
+                            <p>${post.excerpt}</p>
+                            <a href="#" class="btn btn-secondary read-more-btn" data-post-id="${post.id}">Read More</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function loadPostsIntoGrid(gridId, count = null) {
+                const grid = document.getElementById(gridId);
+                const postsToShow = count ? blogPosts.slice(0, count) : blogPosts;
+                grid.innerHTML = postsToShow.map(post => renderPostCard(post)).join('');
+                
+                // Add event listeners to new "Read More" buttons
+                grid.querySelectorAll('.read-more-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const postId = parseInt(btn.dataset.postId);
+                        showSinglePost(postId);
+                    });
+                });
+            }
+
+            function showSinglePost(postId) {
+                const post = blogPosts.find(p => p.id === postId);
+                if (!post) return;
+
+                document.getElementById('post-image').src = post.image;
+                document.getElementById('post-title').textContent = post.title;
+                document.getElementById('post-author').textContent = post.author;
+                document.getElementById('post-author-avatar').src = post.authorAvatar;
+                document.getElementById('post-date').textContent = post.date;
+                document.getElementById('post-body').innerHTML = post.content;
+
+                // Load related posts (excluding the current one)
+                const relatedPosts = blogPosts.filter(p => p.id !== postId).slice(0, 3);
+                const relatedGrid = document.getElementById('related-posts-grid');
+                relatedGrid.innerHTML = relatedPosts.map(p => renderPostCard(p)).join('');
+                 relatedGrid.querySelectorAll('.read-more-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const relatedPostId = parseInt(btn.dataset.postId);
+                        showSinglePost(relatedPostId);
+                    });
+                });
+
+                showView('blog-post-view');
+            }
+
+            // --- Initial Load ---
+            loadPostsIntoGrid('home-posts-grid', 3);
+            loadPostsIntoGrid('blog-list-grid');
+
+            // --- Services Tab Logic ---
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.dataset.tab;
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    document.getElementById(tabName).classList.add('active');
+                });
+            });
+
+            // --- Form Handling (Simulated) ---
+            function handleFormSubmit(formId, successMessage) {
+                const form = document.getElementById(formId);
+                if (form) {
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        alert(successMessage);
+                        form.reset();
+                    });
+                }
+            }
+
+            handleFormSubmit('newsletter-form-hero', 'Thank you for subscribing!');
+            handleFormSubmit('newsletter-form-sidebar', 'Thank you for subscribing!');
+            handleFormSubmit('login-form', 'Login successful! (This is a demo)');
+            handleFormSubmit('consultant-register-form', 'Application submitted! We will be in touch.');
+
+        });
+    </script>
+</body>
+</html>
